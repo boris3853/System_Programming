@@ -1,0 +1,8 @@
+error.c: In function ‘main’:
+error.c:2:2: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]
+    2 |  printf("hello world");
+      |  ^~~~~~
+error.c:2:2: warning: incompatible implicit declaration of built-in function ‘printf’
+error.c:1:1: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+  +++ |+#include <stdio.h>
+    1 | void main(){
