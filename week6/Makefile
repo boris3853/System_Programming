@@ -12,4 +12,4 @@ all: $(OBJ)
 	$(CC) -c $(CFLAGS) $<
 
 clean:
-	rm -rf *.o $(TARGET)
+	rm -rf *.o *.swp $(TARGET)
