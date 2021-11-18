@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <time.h>
+
+
+int **matrix1;
+int **matrix2;
+int **result_matrix;
+
+
+void *pthread_func(void *arg);
+
+void single_calc(int SZ, int ***A, int ***B, int ***C);
+
+int main(int argc, char **argv){
+
+	int SIZE = atoi(argv[1]);
+	srand(time(NULL));
+
+
+	// 동적 배열 할당
+	matrix1 = (int **)malloc(sizeof(int *)*SIZE);
+	matrix2 = (int **)malloc(sizeof(int *)*SIZE);
+	result_matrix = (int **)malloc(sizeof(int *)*SIZE);
+	for(int i=0;i<SIZE;++i){
+		matrix1[i] = (int *)malloc(sizeof(int)*SIZE);
+		matrix2[i] = (int *)malloc(sizeof(int)*SIZE);
+		result_matrix[i] = (int *)malloc(sizeof(int)*SIZE);
+	}
+
+	// 배열에 각 요소값 할당: Matrix1, Matrix2(전치 행렬)
+	for(int i=0;i<SIZE;++i){
+		for(int j=0;j<SIZE;++j){
+			matrix1[i][j] = rand() % 10;
+			matrix2[j][i] = rand() % 10;
+			result_matrix[i][j] = 0;
+		}
+	}
+
+
+	
+	// 배열 출력 테스트
+	for(int i=0;i<SIZE;++i){
+		for(int j=0;j<SIZE;++j){
+			printf("%d ", result_matrix[i][j]);
+		}
+		puts("");
+	}
+	puts("2");
+	for(int i=0;i<SIZE;++i){
+		for(int j=0;j<SIZE;++j){
+			printf("%d ", matrix2[i][j]);
+		}
+		puts("");
+	}
+
+	single_calc(SIZE, &matrix1, &matrix2, &result_matrix);
+	// 배열2 
+
+
+
+
+	// 동적 배열 해제
+	for(int i=0;i<SIZE;++i){
+		free(matrix1[i]);
+		free(matrix2[i]);
+		free(result_matrix[i]);
+	}
+	free(matrix1);
+	free(matrix2);
+	free(result_matrix);
+
+}
+
+void single_calc(int SZ, int ***A, int ***B, int ***C){	
+	for(int i=0;i<SZ;++i){
+		for(int j=0;j<SZ;++j){
+			for(int k=0;k<SZ;++k)
+				 //*C[i][j] += (*A[i][k] * *B[j][k]);
+				 printf("%d %d %d\n", *C[i][j], *A[i][k], *B[j][k]);
+		}
+	}
+}
+
+void *pthread_func(void *arg){
+
+}
