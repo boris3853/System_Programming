@@ -1,12 +1,22 @@
-TARGET = pthread_test
-SRC = pthread_test.c
-OBJ = pthread_test.o
+TARGET1 = pthread_test 
+OBJ1 = pthread_test.o
+SRC1 = pthread_test.c
+
+TARGET2 = simultaneous_thread
+OBJ2 = simultaneous_thread.o
+SRC2 = simultaneous_thread.c
+
 CC = gcc
 LDFLAGS = -pthread -lpthread
 CFLAGS = -D_REENTRANT
 
-all: $(OBJ)
-	$(CC) -o $(TARGET) $(LDFLAGS) $(OBJ)
+all: $(TARGET1) $(TARGET2)
+
+$(TARGET1): $(OBJ1)
+	$(CC) -o $(TARGET1) $(LDFLAGS) $(OBJ1)
+
+$(TARGET2): $(OBJ2)
+	$(CC) -o $(TARGET2) $(LDFLAGS) $(OBJ2)
 
 .c.o:
 	$(CC) -c $(CFLAGS) $<
