@@ -10,12 +10,15 @@ TARGET3 = sync_test
 OBJ3 = sync_test.o
 SRC3 = sync_test.c
 
+TARGET4 = sync_test2
+OBJ4 = sync_test2.o
+SRC4 = sync_test2.c
 
 CC = gcc
 LDFLAGS = -pthread -lpthread
 CFLAGS = -D_REENTRANT
 
-all: $(TARGET1) $(TARGET2) $(TARGET3)
+all: $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4)
 
 $(TARGET1): $(OBJ1)
 	$(CC) -o $(TARGET1) $(LDFLAGS) $(OBJ1)
@@ -25,6 +28,9 @@ $(TARGET2): $(OBJ2)
 
 $(TARGET3): $(OBJ3)
 	$(CC) -o $(TARGET3) $(LDFLAGS) $(OBJ3)
+
+$(TARGET4): $(OBJ4)
+	$(CC) -o $(TARGET4) $(LDFLAGS) $(OBJ4)
 
 .c.o:
 	$(CC) -c $(CFLAGS) $<
