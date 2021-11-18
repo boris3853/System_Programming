@@ -48,7 +48,7 @@ void *thread_function1(void *arg){
 void *thread_function2(void *arg){
 	int i=0;
 	for(i=0;i<LOOP_COUNTER;++i){
-		counter++;
+		counter--;
 		printf("Thread2_counter: %d\n", counter);
 	}
 	pthread_exit("Thread2 EXIT");
