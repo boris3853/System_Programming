@@ -26,13 +26,17 @@ TARGET7 = sync_test3
 OBJ7 = sync_test3.o
 SRC7 = sync_test3.c
 
+TARGET8 = pthread_attr2
+OBJ8 = pthread_attr2.o
+SRC8 = pthread_attr2.c
+
 
 
 CC = gcc
 LDFLAGS = -pthread -lpthread
 CFLAGS = -D_REENTRANT
 
-all: $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7)
+all: $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8)
 
 $(TARGET1): $(OBJ1)
 	$(CC) -o $(TARGET1) $(LDFLAGS) $(OBJ1)
@@ -55,6 +59,8 @@ $(TARGET6): $(OBJ6)
 $(TARGET7): $(OBJ7)
 	$(CC) -o $(TARGET7) $(LDFLAGS) $(OBJ7)
 
+$(TARGET8): $(OBJ8)
+	$(CC) -o $(TARGET8) $(LDFLAGS) $(OBJ8)
 
 
 .c.o:
