@@ -30,13 +30,21 @@ TARGET8 = pthread_attr2
 OBJ8 = pthread_attr2.o
 SRC8 = pthread_attr2.c
 
+TARGET9 = pthread_cancel
+OBJ9 = pthread_cancel.o
+SRC9 = pthread_cancel.c
+
+TARGET10 = pthread_abundance
+OBJ10 = pthread_abundance.o
+SRC10 = pthread_abundance.c
+
 
 
 CC = gcc
 LDFLAGS = -pthread -lpthread
 CFLAGS = -D_REENTRANT
 
-all: $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8)
+all: $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10)
 
 $(TARGET1): $(OBJ1)
 	$(CC) -o $(TARGET1) $(LDFLAGS) $(OBJ1)
@@ -61,6 +69,12 @@ $(TARGET7): $(OBJ7)
 
 $(TARGET8): $(OBJ8)
 	$(CC) -o $(TARGET8) $(LDFLAGS) $(OBJ8)
+
+$(TARGET9): $(OBJ9)
+	$(CC) -o $(TARGET9) $(LDFLAGS) $(OBJ9)
+
+$(TARGET10): $(OBJ10)
+	$(CC) -o $(TARGET10) $(LDFLAGS) $(OBJ10)
 
 
 .c.o:
