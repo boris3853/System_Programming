@@ -8,7 +8,10 @@ typedef struct data{
 	int num;
 	char msg[10];
 }st;
-
+/*
+// int형 데이터와 char형 데이터를 보내기위해
+// struct 생성
+*/
 
 void *thread_func(void *arg);
 char *msg = "hello world";
@@ -23,19 +26,26 @@ int main(){
 	for(int i=0;i<10;++i){
 		st_data[i].num = i;
 		strcpy(st_data[i].msg, msg);
+		// struct 내용 채워넣기
+		
 		res = pthread_create(&thread[i], NULL, thread_func, (void *)&st_data[i]);
 		if(res != 0){
 			perror("Thread creation failed");
 			exit(1);
 		}
+		// 각각의 쓰레드 생성
+		
 	}
 	puts("Waiting for thread to finish..");
+	
 	for(int i=0;i<10;++i){
 		res = pthread_join(thread[i], &thread_result[i]);
 		if(res != 0){
 			perror("Thread join failed");
 			exit(1);
 		}
+		// 쓰레드 종료
+		
 	}
 	printf("final_result = %d\n", final_result);
 }

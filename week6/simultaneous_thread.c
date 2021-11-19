@@ -17,6 +17,8 @@ int main(){
 
 	res1 = pthread_create(&thread1, NULL, thread_function1, NULL);
 	res2 = pthread_create(&thread2, NULL, thread_function2, NULL);
+	// thread1 -> thread_function1(counter++)
+	// thread2 -> thread_function2(counter--) 실행
 	
 	if(res1 != 0 || res2 != 0){
 		perror("Thread Creation failed");
@@ -25,6 +27,7 @@ int main(){
 	
 	res1 = pthread_join(thread1, &thread_result);
 	res2 = pthread_join(thread2, &thread_result);
+	// thread1, thread2 종료
 
 	if(res1 != 0 || res2 != 0){
 		perror("Thread Join failed");
