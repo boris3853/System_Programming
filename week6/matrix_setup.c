@@ -20,11 +20,11 @@ void set_arr(int num){
 		result_matrix[i] = (int *)malloc(sizeof(int)*num);
 	}
 
-	// 배열에 각 요소값 할당: Matrix1, Matrix2(전치 행렬)
+	// 배열에 각 요소값 할당: Matrix1, Matrix2
 	for(int i=0;i<num;++i){
 		for(int j=0;j<num;++j){
 			matrix1[i][j] = rand() % 10;
-			matrix2[j][i] = rand() % 10;
+			matrix2[i][j] = rand() % 10;
 			result_matrix[i][j] = 0;
 		}
 	}

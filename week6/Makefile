@@ -38,13 +38,17 @@ TARGET10 = pthread_abundance
 OBJ10 = pthread_abundance.o
 SRC10 = pthread_abundance.c
 
+TARGET11 = matrix2
+OBJ11 = matrix_setup.o matrix2.o
+SRC11 = matrix_setup.c matrix2.c
+
 
 
 CC = gcc
 LDFLAGS = -pthread -lpthread
 CFLAGS = -D_REENTRANT
 
-all: $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10)
+all: $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11)
 
 $(TARGET1): $(OBJ1)
 	$(CC) -o $(TARGET1) $(LDFLAGS) $(OBJ1)
@@ -75,6 +79,10 @@ $(TARGET9): $(OBJ9)
 
 $(TARGET10): $(OBJ10)
 	$(CC) -o $(TARGET10) $(LDFLAGS) $(OBJ10)
+
+$(TARGET11): $(OBJ11)
+	$(CC) -o $(TARGET11) $(LDFLAGS) $(OBJ11)
+
 
 
 .c.o:
